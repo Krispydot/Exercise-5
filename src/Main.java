@@ -22,6 +22,7 @@ void main() {
     System.out.println("You are a " + chosenRole);
     System.out.println("Health: " + chosenRole.getHealth());
     System.out.println("Damage: " + chosenRole.getDamage());
+    System.out.println("Inventory: " + chosenRole.getItems());
     Enemy skeleton = new Enemy.Builder()
             .name("Skeleton")
             .damage(20)

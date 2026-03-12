@@ -8,4 +8,5 @@ public class Item {
     private final String name;
     private final ItemType type;
     private final int value;
+
 }

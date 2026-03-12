@@ -7,7 +7,7 @@ public class Player {
         this.name = builder.name;
         this.health = builder.health;
         this.damage = builder.damage;
-        this.inventory = new ArrayList<>();
+        this.inventory = builder.inventory;
     }
     private final Roles name;
 

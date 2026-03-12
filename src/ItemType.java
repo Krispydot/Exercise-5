@@ -1,4 +1,5 @@
 public enum ItemType {
     HEAL,
-    DAMAGE
+    DAMAGE,
+    POISON
 }
