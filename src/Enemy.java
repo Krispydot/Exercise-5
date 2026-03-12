@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Enemy {
     private Enemy(Builder builder) {
         this.name = builder.name;
@@ -5,8 +8,22 @@ public class Enemy {
         this.damage = builder.damage;
     }
     private final String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
     private final int damage;
-    private final int health;
+    private int health;
+
 
     public static class Builder {
         private String name;
@@ -32,5 +49,10 @@ public class Enemy {
             return new Enemy(this);
         }
     }
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " health: " + health);
+    }
+
 
 }

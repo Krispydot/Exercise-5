@@ -1,21 +1,42 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
 
     private Player(Builder builder) {
         this.name = builder.name;
         this.health = builder.health;
         this.damage = builder.damage;
-        this.inventory = builder.inventory;
+        this.inventory = new ArrayList<>();
     }
     private final Roles name;
-    private final int damage;
-    private final int health;
-    private final Item inventory;
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public Roles getName() {
+        return name;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    private int damage;
+    private int health;
+
+    public List<Item> getInventory() {
+        return inventory;
+    }
+
+    private List<Item> inventory;
 
     public static class Builder {
         private Roles name;
         private int damage;
         private int health;
-        private Item inventory;
+        private List<Item> inventory;
 
         public Builder health(int health) {
             this.health = health;
@@ -28,7 +49,7 @@ public class Player {
         }
 
         public Builder inventory(Item inventory) {
-            this.inventory = inventory;
+            this.inventory = new ArrayList<>();
             return this;
         }
 
@@ -40,5 +61,12 @@ public class Player {
         public Player build() {
             return new Player(this);
         }
+    }
+    public void takeDamage(int damage) {
+        health -= damage;
+    }
+
+    public void addItem(Item item) {
+        inventory.add(item);
     }
 }
