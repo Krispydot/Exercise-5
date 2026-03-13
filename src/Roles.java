@@ -1,6 +1,6 @@
 
 public enum Roles {
-    ARCHER(80, 30, new Item("Poison Arrow", ItemType.POISON, 20)),
+    ARCHER(80, 30, new Item("Poison Arrow", ItemType.POISON, 40)),
     MAGE(70, 35, new Item("Healing Potion", ItemType.HEAL, 30)),
     WARRIOR(100, 25, new Item("Bomb", ItemType.DAMAGE, 50));
 

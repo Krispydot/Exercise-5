@@ -2,7 +2,11 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
     Game game = new Game();
-    game.start();
+    int rounds = 4;
+    for (int i = 1; i < rounds; i++) {
+        game.start();
+    }
+
 
 }
 

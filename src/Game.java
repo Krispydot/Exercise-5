@@ -38,8 +38,8 @@ public class Game {
                     useItem(item, player, enemy);
 
                 }
-                if (died(enemy, player)) break;
                 split();
+                if (died(enemy, player)) break;
                 enemyTurn(enemy, player);
             }
 
@@ -75,12 +75,22 @@ public class Game {
                System.out.println("CRITICAL HIT!");
            }
             enemy.takeDamage(damage);
+        System.out.println("You did " + damage + " damage to the " + enemy.getName() + "!");
+    }
+    private static void critEnemy(Player player, Enemy enemy) {
+        int crit = (int) (Math.random() * 2);
+        int damage = enemy.getDamage();
+        if (crit == 0) {
+            damage *= 2;
+            System.out.println("CRITICAL HIT!");
+        }
+        player.takeDamage(damage);
+        System.out.println(enemy.getName() + " did " + damage + " damage to you!");
     }
 
     private static void enemyTurn(Enemy enemy, Player player) {
         System.out.println("Enemy's turn!");
-        System.out.println(enemy.getName() + " attacks for " + enemy.getDamage() + " damage!");
-        player.takeDamage(enemy.getDamage());
+        critEnemy(player, enemy);
         System.out.println("Your health: " + player.getHealth());
     }
 
