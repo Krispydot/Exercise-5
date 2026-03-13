@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.management.relation.Role;
 
 public class Player {
 
@@ -8,8 +7,10 @@ public class Player {
         this.health = builder.health;
         this.damage = builder.damage;
         this.inventory = builder.inventory;
+        this.item = builder.item;
     }
     private final Roles name;
+    private Roles item;
 
     public int getDamage() {
         return damage;
@@ -23,25 +24,31 @@ public class Player {
         return health;
     }
 
-    private int damage;
+    private final int damage;
     private int health;
 
     public Item getInventory() {
         return inventory;
     }
 
-    private Item inventory;
+    private final Item inventory;
 
     public static class Builder {
         private Roles name;
         private int damage;
         private int health;
         private Item inventory;
+        private Roles item;
 
         public Builder health(int health) {
             this.health = health;
             return this;
         }
+        public Builder item(Roles item) {
+            this.item = item;
+            return this;
+        }
+
 
         public Builder damage(int damage) {
             this.damage = damage;

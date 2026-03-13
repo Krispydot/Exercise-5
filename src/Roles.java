@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 
 public enum Roles {
     ARCHER(80, 30, new Item("Poison Arrow", ItemType.POISON, 20)),
@@ -28,6 +26,6 @@ public enum Roles {
         return item;
     }
 
-    private Item item;
+    private final Item item;
 
 }
