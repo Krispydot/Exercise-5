@@ -51,7 +51,6 @@ public class Enemy {
     }
     public void takeDamage(int damage) {
         health -= damage;
-        System.out.println(name + " health: " + health);
     }
 
 

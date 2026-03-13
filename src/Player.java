@@ -26,17 +26,17 @@ public class Player {
     private int damage;
     private int health;
 
-    public List<Item> getInventory() {
+    public Item getInventory() {
         return inventory;
     }
 
-    private List<Item> inventory;
+    private Item inventory;
 
     public static class Builder {
         private Roles name;
         private int damage;
         private int health;
-        private List<Item> inventory;
+        private Item inventory;
 
         public Builder health(int health) {
             this.health = health;
@@ -49,7 +49,7 @@ public class Player {
         }
 
         public Builder inventory(Item inventory) {
-            this.inventory = new ArrayList<>();
+            this.inventory = inventory;
             return this;
         }
 
@@ -65,8 +65,7 @@ public class Player {
     public void takeDamage(int damage) {
         health -= damage;
     }
-
-    public void addItem(Item item) {
-        inventory.add(item);
+    public void heal(int amount) {
+        health += amount;
     }
 }
