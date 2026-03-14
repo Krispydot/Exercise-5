@@ -6,6 +6,8 @@ public class Enemy {
         this.damage = builder.damage;
     }
     private final String name;
+    private final int damage;
+    private int health;
 
     public String getName() {
         return name;
@@ -18,10 +20,6 @@ public class Enemy {
     public int getDamage() {
         return damage;
     }
-
-    private final int damage;
-    private int health;
-
 
     public static class Builder {
         private String name;

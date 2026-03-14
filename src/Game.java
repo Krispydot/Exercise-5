@@ -8,7 +8,7 @@ public class Game {
             int userInput;
             int action;
             Roles chosenRole = null;
-            System.out.println("Welcome! To start playing choose a role:");
+            System.out.println("To start playing choose a role:");
             System.out.println("1 - Warrior, 2 - Mage, 3 - Archer");
             userInput = scanner.nextInt();
             chosenRole = chooseRole(userInput, chosenRole);
@@ -33,10 +33,14 @@ public class Game {
                     System.out.println("You ran away...");
                     break;
                 } else if (action == 2) {
-                    System.out.println("You used the " + chosenRole.getItem() + "!");
-                    Item item = chosenRole.getItem();
-                    useItem(item, player, enemy);
-
+                    Item item = player.getInventory();
+                    if (player.getInventory() == null) {
+                        System.out.println("No Items left!");
+                    } else {
+                        System.out.println("You used the " + player.getInventory() + "!");
+                        useItem(item, player, enemy);
+                        player.removeItem();
+                }
                 }
                 split();
                 if (died(enemy, player)) break;
@@ -68,8 +72,10 @@ public class Game {
         }
     }
     private static void crit(Player player, Enemy enemy) {
-            int crit = (int) (Math.random() * 2);
-            int damage = player.getDamage();
+            int crit = (int) (Math.random() * 3);
+            int baseDamage = player.getDamage();
+            int randomBonus = (int)(Math.random() * 6);
+            int damage = baseDamage + randomBonus;
            if (crit == 0) {
                damage *= 2;
                System.out.println("CRITICAL HIT!");
@@ -78,8 +84,10 @@ public class Game {
         System.out.println("You did " + damage + " damage to the " + enemy.getName() + "!");
     }
     private static void critEnemy(Player player, Enemy enemy) {
-        int crit = (int) (Math.random() * 2);
-        int damage = enemy.getDamage();
+        int crit = (int) (Math.random() * 3);
+        int baseDamage = enemy.getDamage();
+        int randomBonus = (int)(Math.random() * 6);
+        int damage = baseDamage + randomBonus;
         if (crit == 0) {
             damage *= 2;
             System.out.println("CRITICAL HIT!");
@@ -128,8 +136,8 @@ public class Game {
                 .build();
         List<Enemy> enemies = List.of(skeleton, demon, ghost, orc);
         Random random = new Random();
-        Enemy enemy = enemies.get(random.nextInt(enemies.size()));
-        return enemy;
+        return enemies.get(random.nextInt(enemies.size()));
+
     }
 
     private static Player createPlayer(Roles chosenRole) {

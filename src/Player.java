@@ -1,4 +1,3 @@
-import javax.management.relation.Role;
 
 public class Player {
 
@@ -7,10 +6,9 @@ public class Player {
         this.health = builder.health;
         this.damage = builder.damage;
         this.inventory = builder.inventory;
-        this.item = builder.item;
+        Roles item = builder.item;
     }
     private final Roles name;
-    private Roles item;
 
     public int getDamage() {
         return damage;
@@ -31,7 +29,7 @@ public class Player {
         return inventory;
     }
 
-    private final Item inventory;
+    private Item inventory;
 
     public static class Builder {
         private Roles name;
@@ -74,5 +72,9 @@ public class Player {
     }
     public void heal(int amount) {
         health += amount;
+    }
+
+    public void removeItem() {
+        inventory = null;
     }
 }
